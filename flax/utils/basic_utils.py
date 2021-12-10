@@ -111,6 +111,7 @@ def visualize(img_cv, label=None, flax=None, table=None, label_text=False):
             x, y, w, h = cv2.boundingRect(np.array(item.get("location")))
             tl, br = (x, y), (x + w, y + h)
             font_size = item.get("font_size") if item.get("font_size") else (br[1]-tl[1])//2
+            font_size = min(font_size, 12)
             font = ImageFont.truetype("simsun.ttc", font_size)
             if item.get('key_type') in ['value']:
                 db_img.rectangle(tl + br, fill=(0, 255, 0, 64), width=1)
@@ -137,6 +138,7 @@ def visualize(img_cv, label=None, flax=None, table=None, label_text=False):
             x, y, w, h = cv2.boundingRect(np.array(item.get("location")))
             tl, br = (x, y), (x + w, y + h)
             font_size = item.get("font_size") if item.get("font_size") else (br[1]-tl[1])//2
+            font_size = min(font_size, 12)
             font = ImageFont.truetype("simsun.ttc", font_size)
             if item.get('key_type') in ['value']:
                 db_img.rectangle(tl + br, outline=(0, 0, 255, 255), width=2)
